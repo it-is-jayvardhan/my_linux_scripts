@@ -251,7 +251,10 @@ awful.screen.connect_for_each_screen(function(s)
             mykeyboardlayout,
             wibox.widget.systray(),
             myvolumebar,
-            battery_widget(),
+            battery_widget({
+                display_notification=true,
+                show_current_level=true,
+            }),
             mytextclock,
             s.mylayoutbox,
         },
