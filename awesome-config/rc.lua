@@ -8,6 +8,8 @@ local awful = require("awful")
 require("awful.autofocus")
 -- Widget and layout library
 local wibox = require("wibox")
+--importing battery widget
+local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
 -- Theme handling library
 local beautiful = require("beautiful")
 -- Notification library
@@ -229,7 +231,7 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "bottom", screen = s,width=1100,height=35,type=dock,opacity=1,bg="transparent"})
+    s.mywibox = awful.wibar({ position = "bottom", screen = s,width=1925,height=45,type=dock,opacity=1,bg="transparent"})
    
 
 
@@ -249,6 +251,7 @@ awful.screen.connect_for_each_screen(function(s)
             mykeyboardlayout,
             wibox.widget.systray(),
             myvolumebar,
+            battery_widget(),
             mytextclock,
             s.mylayoutbox,
         },
