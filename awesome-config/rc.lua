@@ -16,6 +16,10 @@ local logout_menu_widget = require("awesome-wm-widgets.logout-menu-widget.logout
 local net_speed_widget = require("awesome-wm-widgets.net-speed-widget.net-speed")
 --importing volume widget
 local volume_widget = require('awesome-wm-widgets.volume-widget.volume')
+--importing cpu widget
+local cpu_widget = require("awesome-wm-widgets.cpu-widget.cpu-widget")
+--importing ram widget
+local ram_widget = require("awesome-wm-widgets.ram-widget.ram-widget")
 -- Theme handling library
 local beautiful = require("beautiful")
 -- Notification library
@@ -256,6 +260,13 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.horizontal,
             --mykeyboardlayout,
             wibox.widget.systray(),
+            ram_widget(),
+            cpu_widget({
+                width = 70,
+                step_width = 50,
+                step_spacing = 2,
+                color = '#000000'
+            }),
             net_speed_widget(),
             battery_widget({
                 display_notification=true,
