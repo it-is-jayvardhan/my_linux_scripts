@@ -272,7 +272,12 @@ globalkeys = gears.table.join(
     end),
     awful.key({ }, "XF86MonBrightnessUp", function ()
         awful.util.spawn("brightnessctl set +10%")
-    end)
+    end),
+        --adding buttons for volume control
+        awful.key({}, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer -D pulse sset Master 2%+", false) end),
+        awful.key({}, "XF86AudioLowerVolume", function () awful.util.spawn("amixer -D pulse sset Master 2%-", false) end),
+        awful.key({}, "XF86AudioMute", function () awful.util.spawn("amixer -D pulse sset Master toggle", false) end)
+        
     ,
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
