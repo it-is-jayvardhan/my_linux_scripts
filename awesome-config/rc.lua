@@ -10,6 +10,12 @@ require("awful.autofocus")
 local wibox = require("wibox")
 --importing battery widget
 local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
+--importing logout widget
+local logout_menu_widget = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
+--importing net speedd widget
+local net_speed_widget = require("awesome-wm-widgets.net-speed-widget.net-speed")
+--importing volume widget
+local volume_widget = require('awesome-wm-widgets.volume-widget.volume')
 -- Theme handling library
 local beautiful = require("beautiful")
 -- Notification library
@@ -248,14 +254,22 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
+            --mykeyboardlayout,
             wibox.widget.systray(),
-            myvolumebar,
+            net_speed_widget(),
             battery_widget({
                 display_notification=true,
                 show_current_level=true,
             }),
+            volume_widget{
+                widget_type = 'vertical_bar',
+                shape='powerline'
+            },
             mytextclock,
+            logout_menu_widget{
+                font = 'Play 10',
+                onlock = function() awful.spawn.with_shell('i3lock-fancy') end
+            },
             s.mylayoutbox,
         },
     }
