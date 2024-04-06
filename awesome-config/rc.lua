@@ -607,9 +607,6 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 awful.spawn.with_shell("picom")
 awful.spawn.with_shell("nitrogen --restore")
 beautiful.useless_gap=5
-mylauncher = awful.widget.launcher({
-    image = "/usr/share/awesome/icons/chrome.png",
-    command = "google-chrome",
-    tooltip = "Launch Firefox"
-})
-
+--polkit-authentication-agents-for-kde-plasma
+awful.spawn.with_shell("/usr/lib/x86_64-linux-gnu/libexec/polkit-kde-authentication-agent-1 &")
+awful.spawn.with_shell("/org/kde/PolicyKit1/AuthenticationAgent")
