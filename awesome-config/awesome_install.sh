@@ -6,6 +6,7 @@ git clone https://github.com/horst3180/arc-icon-theme --depth 1 && cd arc-icon-t
 sudo make install
 sudo mkdir ~/.config/awesome
 sudo git clone https://github.com/streetturtle/awesome-wm-widgets.git ~/.config/awesome/awesome-wm-widgets
+cd ~/
 sudo cp rc.lua ~/.config/awesome/
 sudo cp  wallpaper.png /usr/share/awesome/themes/zenburn
 sudo cp theme.lua /usr/share/awesome/themes/zenburn
